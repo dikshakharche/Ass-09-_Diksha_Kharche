@@ -3,11 +3,14 @@ import java.io.Serializable;
 import java.sql.Date;
 import java.util.List;
 
-	public class Movie implements Serializable {
+import com.psl.training.enums.Category;
+import com.psl.training.enums.Language;
+
+	public class Movie implements Serializable,Comparable<Movie> {
 		private int movieId;
 		private String movieName; 
-		private String movieType;
-		private String language; 
+		private Category movieType;
+		private Language language; 
 		private Date releaseDate;
 		private List<String> casting;
 		private Double rating;
@@ -18,7 +21,7 @@ import java.util.List;
 			// TODO Auto-generated constructor stub
 		}
 
-		public Movie(int movieId, String movieName,String movieType, String language, Date releaseDate,
+		public Movie(int movieId, String movieName,Category movieType, Language language, Date releaseDate,
 				List<String> casting, Double rating, Double totalBusinessDone) {
 			super();
 			this.movieId = movieId;
@@ -47,19 +50,19 @@ import java.util.List;
 			this.movieName = movieName;
 		}
 
-		public String getMovieType() {
+		public Category getMovieType() {
 			return movieType;
 		}
 
-		public void setMovieType(String movieType) {
+		public void setMovieType(Category movieType) {
 			this.movieType = movieType;
 		}
 
-		public String getLanguage() {
+		public Language getLanguage() {
 			return language;
 		}
 
-		public void setLanguage(String language) {
+		public void setLanguage(Language language) {
 			this.language = language;
 		}
 
@@ -93,5 +96,10 @@ import java.util.List;
 
 		public void setTotalBusinessDone(Double totalBusinessDone) {
 			this.totalBusinessDone = totalBusinessDone;
+		}
+
+		@Override
+		public int compareTo(Movie o) {
+			return this.getMovieName().compareTo(o.getMovieName());
 		}
 }

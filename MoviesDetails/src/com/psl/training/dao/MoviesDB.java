@@ -23,8 +23,8 @@ public class MoviesDB {
 				pstmt = con.prepareStatement("insert into movies values (?,?,?,?,?,?,?)");
 				pstmt.setInt(1, m.getMovieId());
 				pstmt.setString(2, m.getMovieName());
-				pstmt.setString(3, m.getMovieType());
-				pstmt.setString(4, m.getLanguage());
+				pstmt.setString(3, m.getMovieType().name());
+				pstmt.setString(4, m.getLanguage().name());
 				pstmt.setDate(5, m.getReleaseDate());
 				pstmt.setDouble(6, m.getRating());
 				pstmt.setDouble(7, m.getTotalBusinessDone());
@@ -50,8 +50,8 @@ public class MoviesDB {
 			pstmt = con.prepareStatement("insert into movies values (?,?,?,?,?,?,?)");
 			pstmt.setInt(1, m.getMovieId());
 			pstmt.setString(2, m.getMovieName());
-			pstmt.setString(3, m.getMovieType());
-			pstmt.setString(4, m.getLanguage());
+			pstmt.setString(3, m.getMovieType().name());
+			pstmt.setString(4, m.getLanguage().name());
 			pstmt.setDate(5, m.getReleaseDate());
 			pstmt.setDouble(6, m.getRating());
 			pstmt.setDouble(7, m.getTotalBusinessDone());
@@ -68,7 +68,33 @@ public class MoviesDB {
 			e.printStackTrace();
 		}
 	}
-	
+
+	public void updateRatings(Movie movie, double rating) {
+		PreparedStatement pstmt = null;
+		try {
+			pstmt = con.prepareStatement("update movies set movierating = ? where movieId = ?");
+			pstmt.setDouble(1, rating);
+			pstmt.setInt(2, movie.getMovieId());
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	public void updateBusiness(Movie movie, double amount) {
+		PreparedStatement pstmt = null;
+		try {
+			pstmt = con.prepareStatement("update movies set totalbusinessdone = ? where movieId = ?");
+			pstmt.setDouble(1, amount);
+			pstmt.setInt(2, movie.getMovieId());
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
 	
 }
 

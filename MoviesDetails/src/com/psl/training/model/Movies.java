@@ -1,5 +1,6 @@
 package com.psl.training.model;
 import java.io.BufferedReader;
+import com.psl.training.enums.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -26,7 +27,7 @@ public class Movies implements Serializable {
 			while((thisLine=bf.readLine())!=null) {
 				String[] temp = thisLine.split(",");
 				List<String> lst = Arrays.asList(temp[5].split("-"));
-				Movie movieObj = new Movie(Integer.parseInt(temp[0]),temp[1],temp[2],temp[3],Date.valueOf(temp[4]),lst,Double.parseDouble(temp[6]),Double.parseDouble(temp[7]));
+				Movie movieObj = new Movie(Integer.parseInt(temp[0]),temp[1],Category.valueOf(temp[2].replaceAll(" ", "_").toUpperCase()),Language.valueOf(temp[3].toUpperCase()),Date.valueOf(temp[4]),lst,Double.parseDouble(temp[6]),Double.parseDouble(temp[7]));
 				movies.add(movieObj);
 				
 			}
