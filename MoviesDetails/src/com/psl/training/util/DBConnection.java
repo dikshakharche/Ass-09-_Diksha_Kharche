@@ -19,7 +19,6 @@ public class DBConnection {
 		try {
 			Class.forName(driverClass);
 			con = DriverManager.getConnection(url,username,password);
-			System.out.println("connection created ");
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

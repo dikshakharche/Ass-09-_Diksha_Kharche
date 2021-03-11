@@ -1,8 +1,9 @@
 package com.psl.training.model;
+import java.io.Serializable;
 import java.sql.Date;
 import java.util.List;
 
-	public class Movie {
+	public class Movie implements Serializable {
 		private int movieId;
 		private String movieName; 
 		private String movieType;

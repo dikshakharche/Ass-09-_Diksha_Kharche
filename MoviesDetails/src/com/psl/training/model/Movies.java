@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.Serializable;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -12,7 +13,7 @@ import java.util.List;
 
 import com.psl.training.model.*;
 
-public class Movies {
+public class Movies implements Serializable {
     //SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");  
 	
 	List<Movie> movies = new ArrayList<Movie>();
@@ -34,4 +35,14 @@ public class Movies {
 		}
 		return movies;
 	}
+	
+	public void addMovie(Movie movie) {
+		movies.add(movie);
+	}
+
+	public List<Movie> getMovies() {
+		return movies;
+	}
+
+
 }
